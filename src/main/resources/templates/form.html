@@ -11,10 +11,10 @@
     </div>   
     <div class="container">
       <h2> Grade Portal </h2>
-      <form method="post"> 
-        <input type="text" placeholder="Name">
-        <input type="text" placeholder="Score">  
-        <input type="text" placeholder="Subject">
+      <form method="post" th:object="${grade}" th:action="@{/handleSubmit}"> 
+        <input type="text" placeholder="Name" th:field="*{name}">
+        <input type="text" placeholder="Score" th:field="*{score}">  
+        <input type="text" placeholder="Subject" th:field="*{subject}">
         <br><br>
         <input type="submit" value="Submit">
       </form>  
