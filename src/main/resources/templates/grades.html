@@ -1,6 +1,6 @@
 <!DOCTYPE>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head> 
+  <head>
     <title>Grades</title>
     <link th:href="@{/grades-stylesheet.css}" rel="stylesheet">
   </head>
@@ -13,7 +13,7 @@
 
     <div class= "container">
       <h2 > Grades </h2>
-      <table id="table"> 
+      <table id="table">
         <tr>
           <th>Student</th>
           <th>Subject</th>
@@ -23,9 +23,9 @@
           <td th:text="${grade.name}"></td>
           <td th:text="${grade.subject}"></td>
           <td th:text="${grade.score}"></td>
+          <td><a role="button" class="update" th:href="@{/(name = ${grade.name})}">Update</a></td>
         </tr>
       </table>
     </div>
-    
   </body>
 </html>
