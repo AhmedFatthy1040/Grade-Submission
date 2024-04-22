@@ -8,6 +8,7 @@ public class Grade {
     private String name;
     @NotBlank(message = "Subject is mandatory")
     private String subject;
+    @Score(message = "The entered score is invalid!")
     private String score;
     private String id;
 
