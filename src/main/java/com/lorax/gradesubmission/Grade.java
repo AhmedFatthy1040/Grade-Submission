@@ -1,8 +1,12 @@
 package com.lorax.gradesubmission;
 
-import java.util.UUID;;
+import java.util.UUID;
+
+import jakarta.validation.constraints.NotBlank;;
 public class Grade {
+    @NotBlank(message = "Name is mandatory")
     private String name;
+    @NotBlank(message = "Subject is mandatory")
     private String subject;
     private String score;
     private String id;
