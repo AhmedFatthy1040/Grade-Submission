@@ -33,7 +33,7 @@ public class GradeService {
 
     public int getGradeIndex(String id) {
         for (int i = 0; i < getGrades().size(); i++) {
-            if (getGrades().get(i).getId().equals(id)) {
+            if (getGrade(i).getId().equals(id)) {
                 return i;
             }
         }
