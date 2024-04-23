@@ -2,12 +2,18 @@ package com.lorax.gradesubmission.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.lorax.gradesubmission.Constants;
 import com.lorax.gradesubmission.Grade;
 import com.lorax.gradesubmission.repository.GradeRepository;
 
+@Service
 public class GradeService {
-    GradeRepository gradeRepository = new GradeRepository();
+
+    @Autowired
+    GradeRepository gradeRepository;
 
     public Grade getGrade(int index) {
         return gradeRepository.getGrade(index);
