@@ -1,6 +1,7 @@
 package com.lorax.gradesubmission.controller;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,7 +18,8 @@ import jakarta.validation.Valid;
 @Controller
 public class GradeController {
 
-    GradeService gradeService = new GradeService();
+    @Autowired
+    GradeService gradeService;
 
     @GetMapping("/")
     public String gradeForm(Model model, @RequestParam(required = false) String id) {
