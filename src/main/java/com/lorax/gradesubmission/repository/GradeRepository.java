@@ -1,29 +1,18 @@
 package com.lorax.gradesubmission.repository;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
-import com.lorax.gradesubmission.Grade;
+import com.lorax.gradesubmission.model.Grade;
 
-@Repository
-public class GradeRepository {
-    private List<Grade> studentGrades = new ArrayList<>();
+import jakarta.transaction.Transactional;
 
-    public Grade getGrade(int index) {
-        return studentGrades.get(index);
-    }
-
-    public void addGrade(Grade grade) {
-        studentGrades.add(grade);
-    }
-
-    public void updateGrade(Grade grade, int index) {
-        studentGrades.set(index, grade);
-    }
-
-    public List<Grade> getGrades() {
-        return studentGrades;
-    }
+public interface GradeRepository extends CrudRepository<Grade, Long>{
+    Optional<Grade> findByStudentIdAndCourseId(Long studentId, Long courseId);
+    @Transactional
+    void deleteByStudentIdAndCourseId(Long studentId, Long courseId);
+    List<Grade> findByStudentId(Long studentId);
+    List<Grade> findByCourseId(Long courseId);
 }
