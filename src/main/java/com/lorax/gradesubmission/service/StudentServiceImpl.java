@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.lorax.gradesubmission.exception.EntityNotFoundException;
-import com.lorax.gradesubmission.exception.StudentNotFoundException;
 import com.lorax.gradesubmission.model.Student;
 import com.lorax.gradesubmission.repository.StudentRepository;
 
