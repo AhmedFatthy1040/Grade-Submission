@@ -9,13 +9,17 @@ import com.lorax.gradesubmission.model.User;
 import com.lorax.gradesubmission.exception.EntityNotFoundException;
 import com.lorax.gradesubmission.repository.UserRepository;
 
-import lombok.AllArgsConstructor;
+
 @Service
-@AllArgsConstructor
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.userRepository = userRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
 
     @Override
     public User getUser(Long id) {
@@ -25,6 +29,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User saveUser(User user) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
