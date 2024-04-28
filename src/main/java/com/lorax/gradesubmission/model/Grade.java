@@ -1,4 +1,6 @@
 package com.lorax.gradesubmission.model;
+import com.lorax.gradesubmission.validation.Score;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,6 +27,7 @@ public class Grade {
     @Column(name = "id")
     private Long id;
 
+    @Score
     @Column(name = "score", nullable = false)
     private String score;
 
