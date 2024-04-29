@@ -9,22 +9,26 @@ import com.lorax.gradesubmission.model.User;
 import com.lorax.gradesubmission.exception.EntityNotFoundException;
 import com.lorax.gradesubmission.repository.UserRepository;
 
+import lombok.AllArgsConstructor;
+
 
 @Service
+@AllArgsConstructor
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
-        this.userRepository = userRepository;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-    }
-
     @Override
     public User getUser(Long id) {
         Optional<User> user = userRepository.findById(id);
         return unwrapUser(user, id);
+    }
+
+    @Override
+    public User getUser(String username) {
+        Optional<User> user = userRepository.findByUsername(username);
+        return unwrapUser(user, 404L);
     }
 
     @Override
